@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Контакты. Курьерская доставка по Санкт-Петербургу, Москве, России - ЛТК elteca.ru</title>
   <meta name="description" content="Телефон, адрес офиса и реквизиты ООО «ЛТК» в Санкт-Петербурге.">
-  <link rel="stylesheet" href="style.css?v=8a22725c1df4">
+  <link rel="stylesheet" href="style.css?v=4ff260d9df4f">
   <meta name="yandex-verification" content="bb30790d9125906d" />
 </head>
 <body>
@@ -28,14 +28,15 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="index.html"><span class="brand-icon">О</span><span>ОднОкно<small>by elteca</small></span></a>
-      <nav aria-label="Основная навигация">
+      <button class="nav-toggle" type="button" aria-controls="site-nav">Меню</button>
+      <nav id="site-nav" aria-label="Основная навигация">
         <a href="index.html#services">Услуги</a>
         <a href="tariffs.html">Тарифы на доставку</a>
         <a href="index.html#benefits">Преимущества</a>
         <a href="index.html#business">Для бизнеса</a>
         <a href="contacts.html" aria-current="page">Контакты</a>
+        <a class="button nav-button" href="#feedback">Оставить заявку</a>
       </nav>
-      <a class="button nav-button" href="#feedback">Открыть окно</a>
     </div>
   </header>
 
@@ -105,6 +106,7 @@
       <a href="#contacts">Наверх</a>
     </div>
   </footer>
+  <script src="navigation.js" defer></script>
   <script src="callback.js?v=965f1a0bed0f" defer></script>
 </body>
 </html>
