@@ -244,7 +244,7 @@ body:has(.callback-dialog[open]) {
 }
 
 .callback-dialog h2 {
-  margin: 0 26px 22px 0;
+  margin: 0 26px 12px 0;
   font-size: 21px;
   font-weight: 600;
   line-height: 1.2;
@@ -294,6 +294,15 @@ body:has(.callback-dialog[open]) {
   margin: 0;
   color: var(--muted);
   font-size: 14px;
+}
+
+.callback-plan {
+  margin: 0 0 20px;
+  color: #8bc5ff;
+}
+
+.callback-dialog .callback-plan {
+  color: #165db5;
 }
 
 .callback-actions {

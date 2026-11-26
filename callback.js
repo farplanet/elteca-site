@@ -1,5 +1,6 @@
 const dialog = document.querySelector('#callback-dialog');
 const form = document.querySelector('#callback-form');
+const packageLabel = document.querySelector('#callback-package');
 const status = document.querySelector('#callback-status');
 const copyFallback = document.querySelector('#callback-copy');
 const copyText = document.querySelector('#callback-text');
@@ -9,12 +10,25 @@ const phoneField = document.querySelector('#callback-phone');
 let activeCard;
 let selectedPlan = '';
 
+function selectPlan(plan) {
+  selectedPlan = plan;
+  packageLabel.querySelector('strong').textContent = plan;
+  packageLabel.hidden = false;
+}
+
+if (!dialog) {
+  const packageFromUrl = new URLSearchParams(window.location.search).get('package');
+  if (['Start', 'Small', 'Medium', 'Enterprise'].includes(packageFromUrl)) {
+    selectPlan(packageFromUrl);
+  }
+}
+
 if (typeof dialog?.showModal === 'function') {
   for (const link of document.querySelectorAll('[data-plan]')) {
     link.setAttribute('aria-haspopup', 'dialog');
     link.addEventListener('click', (event) => {
       activeCard = link;
-      selectedPlan = link.dataset.plan;
+      selectPlan(link.dataset.plan);
       copyFallback.hidden = true;
       status.textContent = '';
       dialog.showModal();
