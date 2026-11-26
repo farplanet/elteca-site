@@ -6,6 +6,9 @@ const submitButton = form.querySelector('button[type=submit]');
 const accessKey = 'bc89d98ee96273007bdfb8c18819f8f882c4cbdc1382abaf7433b9555219b311';
 const nameField = document.querySelector('#callback-name');
 const phoneField = document.querySelector('#callback-phone');
+const dialogFields = dialog?.querySelector('#callback-fields');
+const dialogComplete = dialog?.querySelector('#callback-complete');
+const completeButton = dialogComplete?.querySelector('button');
 
 let activeCard;
 let selectedPlan = '';
@@ -29,6 +32,8 @@ if (typeof dialog?.showModal === 'function') {
     link.addEventListener('click', (event) => {
       activeCard = link;
       selectPlan(link.dataset.plan);
+      dialogFields.hidden = false;
+      dialogComplete.hidden = true;
       if (!submitButton.disabled) status.textContent = '';
       dialog.showModal();
       event.preventDefault();
@@ -36,6 +41,7 @@ if (typeof dialog?.showModal === 'function') {
   }
 
   dialog.querySelector('.callback-close').addEventListener('click', () => dialog.close());
+  completeButton.addEventListener('click', () => dialog.close());
 
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) dialog.close();
@@ -55,6 +61,7 @@ for (const field of [nameField, phoneField]) {
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  if (submitButton.disabled || dialogFields?.hidden) return;
 
   const name = nameField.value.trim();
   const phone = phoneField.value.trim();
@@ -71,9 +78,8 @@ form.addEventListener('submit', async (event) => {
   phoneField.setCustomValidity(phoneError);
   if (!form.reportValidity()) return;
 
-  if (submitButton.disabled) return;
-
   const submission = Object.fromEntries(new FormData(form));
+  const submittingCard = activeCard;
   submission['Имя'] = name;
   submission['Телефон'] = phone;
   submission['Пакет'] = selectedPlan || 'Обратная связь';
@@ -97,9 +103,18 @@ form.addEventListener('submit', async (event) => {
 
     form.reset();
     const confirmation = 'отправлена, спасибо! Мы свяжемся с вами в рабочее время.';
-    status.textContent = selectedPlan === submission['Пакет']
-      ? 'Заявка на пакет ' + selectedPlan + ' ' + confirmation
-      : 'Заявка ' + confirmation;
+    if (!dialog) {
+      status.textContent = selectedPlan
+        ? 'Заявка на пакет ' + selectedPlan + ' ' + confirmation
+        : 'Заявка ' + confirmation;
+    } else if (dialog.open && activeCard === submittingCard) {
+      status.textContent = 'Заявка на пакет ' + selectedPlan + ' ' + confirmation;
+      dialogFields.hidden = true;
+      dialogComplete.hidden = false;
+      completeButton.focus();
+    } else {
+      status.textContent = '';
+    }
   } catch {
     status.textContent = 'Не удалось подтвердить отправку. Попробуйте ещё раз.';
   } finally {
