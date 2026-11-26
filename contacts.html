@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Контакты — ОднОкно by elteca</title>
   <meta name="description" content="Телефон, адрес офиса и реквизиты ООО «ЛТК» в Санкт-Петербурге.">
-  <link rel="stylesheet" href="style.css?v=8086235a7920">
+  <link rel="stylesheet" href="style.css?v=8a22725c1df4">
   <meta name="yandex-verification" content="bb30790d9125906d" />
 </head>
 <body>
@@ -78,19 +78,17 @@
       <div class="wrap">
         <h2 id="feedback-title">Обратная связь</h2>
         <div class="tariff-card callback-content feedback-card">
-          <form id="callback-form" hidden>
+          <form id="callback-form" class="ym-disable-submit" action="https://silentforms.com/api/submit" method="post" hidden>
             <p class="callback-plan" id="callback-package" hidden>Выбранный пакет: <strong></strong></p>
             <label for="callback-name">Ваше имя</label>
-            <input id="callback-name" autocomplete="name" maxlength="100" required>
+            <input id="callback-name" class="ym-disable-keys" name="Имя" autocomplete="name" maxlength="100" required>
             <label for="callback-phone">Телефон</label>
-            <input id="callback-phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="30" required>
-            <p class="callback-note">В локальной версии форму можно скопировать в виде текста.</p>
+            <input id="callback-phone" class="ym-disable-keys" name="Телефон" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="30" required>
             <div class="callback-actions">
-              <button class="button" type="submit">Скопировать заявку</button>
+              <button class="button" type="submit">Отправить заявку</button>
             </div>
-            <div id="callback-copy" hidden>
-              <label for="callback-text">Текст заявки</label>
-              <textarea id="callback-text" readonly rows="3"></textarea>
+            <div class="callback-honeypot" aria-hidden="true">
+              <input type="text" name="sf_extra" tabindex="-1" autocomplete="off">
             </div>
             <p class="callback-status" id="callback-status" role="status"></p>
           </form>
@@ -107,6 +105,6 @@
       <a href="#contacts">Наверх</a>
     </div>
   </footer>
-  <script src="callback.js?v=12738ce189bf" defer></script>
+  <script src="callback.js?v=2d12a8a29974" defer></script>
 </body>
 </html>

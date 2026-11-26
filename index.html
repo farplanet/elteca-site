@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ОднОкно by elteca — услуги для бизнеса</title><meta name="description" content="Бухгалтерия, доставка, юридическое сопровождение и мерч для бизнеса по одному договору."><link rel="stylesheet" href="style.css?v=8086235a7920">
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ОднОкно by elteca — услуги для бизнеса</title><meta name="description" content="Бухгалтерия, доставка, юридическое сопровождение и мерч для бизнеса по одному договору."><link rel="stylesheet" href="style.css?v=8a22725c1df4">
   <meta name="yandex-verification" content="bb30790d9125906d" />
 </head>
 <body>
@@ -63,21 +63,19 @@
     <div class="callback-content">
       <button class="callback-close" type="button" aria-label="Закрыть форму">×</button>
       <h2 id="callback-title">Оставьте заявку</h2>
-      <form id="callback-form">
+      <form id="callback-form" class="ym-disable-submit" action="https://silentforms.com/api/submit" method="post">
         <p class="callback-plan" id="callback-package" hidden>Выбранный пакет: <strong></strong></p>
-        <input id="callback-name" name="name" aria-label="Ваше имя" placeholder="Ваше имя" autocomplete="name" maxlength="100" required autofocus>
-        <input id="callback-phone" name="phone" type="tel" aria-label="Телефон" autocomplete="tel" placeholder="+7 (900) 000-00-00" maxlength="30" required>
+        <input id="callback-name" class="ym-disable-keys" name="Имя" aria-label="Ваше имя" placeholder="Ваше имя" autocomplete="name" maxlength="100" required autofocus>
+        <input id="callback-phone" class="ym-disable-keys" name="Телефон" type="tel" aria-label="Телефон" autocomplete="tel" placeholder="+7 (900) 000-00-00" maxlength="30" required>
         <div class="callback-actions">
-          <button class="button" type="submit">Скопировать заявку</button>
+          <button class="button" type="submit">Отправить заявку</button>
         </div>
-        <p class="callback-note">Текст заявки можно скопировать и обсудить с менеджером ЛТК.</p>
-        <div id="callback-copy" hidden>
-          <label for="callback-text">Текст заявки</label>
-          <textarea id="callback-text" readonly rows="3"></textarea>
+        <div class="callback-honeypot" aria-hidden="true">
+          <input type="text" name="sf_extra" tabindex="-1" autocomplete="off">
         </div>
         <p class="callback-status" id="callback-status" role="status"></p>
       </form>
     </div>
   </dialog>
-  <script src="callback.js?v=12738ce189bf" defer></script>
+  <script src="callback.js?v=2d12a8a29974" defer></script>
 </body></html>

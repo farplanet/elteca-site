@@ -363,7 +363,6 @@ body:has(.callback-dialog[open]) {
   color: #616b7d;
 }
 
-.callback-dialog .callback-note + div:not([hidden]),
 .callback-dialog .callback-status:not(:empty) {
   margin-top: 12px;
 }
@@ -405,4 +404,14 @@ body:has(.callback-dialog[open]) {
 
 .feedback-card .callback-actions .button {
   width: 100%;
+}
+
+.callback-honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+.callback-actions .button:disabled {
+  opacity: .7;
+  cursor: wait;
 }
