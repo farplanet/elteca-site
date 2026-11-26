@@ -9,16 +9,16 @@ const phoneField = document.querySelector('#callback-phone');
 let activeCard;
 let selectedPlan = '';
 
-if (dialog) {
+if (typeof dialog?.showModal === 'function') {
   for (const link of document.querySelectorAll('[data-plan]')) {
     link.setAttribute('aria-haspopup', 'dialog');
     link.addEventListener('click', (event) => {
-      event.preventDefault();
       activeCard = link;
       selectedPlan = link.dataset.plan;
       copyFallback.hidden = true;
       status.textContent = '';
       dialog.showModal();
+      event.preventDefault();
     });
   }
 

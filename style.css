@@ -197,7 +197,7 @@
 
 /* Package enquiry */
 .plan-interactive {
-  position: relative;
+  display: block;
   transition: background-color .15s ease, border-color .15s ease;
 }
 
@@ -207,18 +207,7 @@
   border-color: #558cce;
 }
 
-.plan-link::after {
-  position: absolute;
-  inset: 0;
-  content: "";
-  border-radius: 16px;
-}
-
-.plan-link:focus-visible {
-  outline: none;
-}
-
-.plan-link:focus-visible::after {
+.plan-interactive:focus-visible {
   outline: 2px solid #8bc5ff;
   outline-offset: 3px;
 }
