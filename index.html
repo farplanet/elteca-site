@@ -63,7 +63,7 @@
     <div class="callback-content">
       <button class="callback-close" type="button" aria-label="Закрыть форму">×</button>
       <h2 id="callback-title">Оставьте заявку</h2>
-      <form id="callback-form" class="ym-disable-submit" action="https://formspree.io/f/xeagnwkr" method="post">
+      <form id="callback-form" class="ym-disable-submit" action="https://silentforms.com/api/submit" method="post">
         <p class="callback-plan" id="callback-package" hidden>Выбранный пакет: <strong></strong></p>
         <input id="callback-name" class="ym-disable-keys" name="Имя" aria-label="Ваше имя" placeholder="Ваше имя" autocomplete="name" maxlength="100" required autofocus>
         <input id="callback-phone" class="ym-disable-keys" name="Телефон" type="tel" aria-label="Телефон" autocomplete="tel" placeholder="+7 (900) 000-00-00" maxlength="30" required>
@@ -71,11 +71,11 @@
           <button class="button" type="submit">Отправить заявку</button>
         </div>
         <div class="callback-honeypot" aria-hidden="true">
-          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          <input type="text" name="sf_extra" tabindex="-1" autocomplete="off">
         </div>
         <p class="callback-status" id="callback-status" role="status"></p>
       </form>
     </div>
   </dialog>
-  <script src="callback.js?v=4fc3f0dce4c7" defer></script>
+  <script src="callback.js?v=cbf7aa9defe1" defer></script>
 </body></html>
