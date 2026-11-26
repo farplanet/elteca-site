@@ -96,9 +96,10 @@ form.addEventListener('submit', async (event) => {
     if (!response.ok || result.status !== 'success') throw new Error('Submission failed');
 
     form.reset();
+    const confirmation = 'отправлена, спасибо! Мы свяжемся с вами в рабочее время.';
     status.textContent = selectedPlan === submission['Пакет']
-      ? 'Заявка на пакет ' + selectedPlan + ' отправлена.'
-      : 'Заявка отправлена.';
+      ? 'Заявка на пакет ' + selectedPlan + ' ' + confirmation
+      : 'Заявка ' + confirmation;
   } catch {
     status.textContent = 'Не удалось подтвердить отправку. Попробуйте ещё раз.';
   } finally {
