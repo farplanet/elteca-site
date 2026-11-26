@@ -118,6 +118,16 @@
   padding-block: clamp(48px, 7vw, 84px);
 }
 
+
+.tariff-about .intro {
+  max-width: 800px;
+}
+
+.tariff-about a {
+  color: #8bc5ff;
+  text-decoration: underline;
+}
+
 .tariff-stack {
   display: grid;
   gap: 20px;
