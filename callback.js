@@ -44,8 +44,14 @@ if (typeof dialog?.showModal === 'function') {
   dialog.addEventListener('close', () => activeCard?.focus());
 }
 
-phoneField.addEventListener('input', () => phoneField.setCustomValidity(''));
-nameField.addEventListener('input', () => nameField.setCustomValidity(''));
+const requiredMessage = 'Пожалуйста, заполните это поле.';
+
+for (const field of [nameField, phoneField]) {
+  field.addEventListener('invalid', () => {
+    if (field.validity.valueMissing) field.setCustomValidity(requiredMessage);
+  });
+  field.addEventListener('input', () => field.setCustomValidity(''));
+}
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -54,10 +60,15 @@ form.addEventListener('submit', async (event) => {
   const phone = phoneField.value.trim();
   const phoneDigits = phone.replace(/\D/g, '');
 
-  nameField.setCustomValidity(name ? '' : 'Укажите ваше имя.');
-  phoneField.setCustomValidity(phoneDigits.length >= 10 && phoneDigits.length <= 15
-    ? ''
-    : 'Введите номер телефона с кодом города или страны.');
+  nameField.setCustomValidity(name ? '' : requiredMessage);
+
+  let phoneError = '';
+  if (!phone) {
+    phoneError = requiredMessage;
+  } else if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+    phoneError = 'Введите номер телефона с кодом города или страны.';
+  }
+  phoneField.setCustomValidity(phoneError);
   if (!form.reportValidity()) return;
 
   if (submitButton.disabled) return;
