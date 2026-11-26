@@ -26,18 +26,14 @@
   <dialog class="callback-dialog" id="callback-dialog" aria-labelledby="callback-title">
     <div class="callback-content">
       <button class="callback-close" type="button" aria-label="Закрыть форму">×</button>
-      <h2 id="callback-title">Обсудить пакет</h2>
-      <p class="callback-package" id="callback-package"></p>
+      <h2 id="callback-title">Оставьте заявку</h2>
       <form id="callback-form">
-        <label for="callback-name">Ваше имя</label>
-        <input id="callback-name" name="name" autocomplete="name" maxlength="100" required autofocus>
-        <label for="callback-phone">Телефон</label>
-        <input id="callback-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="30" required>
-        <p class="callback-note">Скопируйте текст заявки для обсуждения. Связаться с ЛТК можно по телефону.</p>
+        <input id="callback-name" name="name" aria-label="Ваше имя" placeholder="Ваше имя" autocomplete="name" maxlength="100" required autofocus>
+        <input id="callback-phone" name="phone" type="tel" aria-label="Телефон" autocomplete="tel" placeholder="+7 (900) 000-00-00" maxlength="30" required>
         <div class="callback-actions">
           <button class="button" type="submit">Скопировать заявку</button>
-          <a class="text-link" href="tel:+79216319893">Позвонить в ЛТК</a>
         </div>
+        <p class="callback-note">Текст заявки можно скопировать и обсудить с менеджером ЛТК.</p>
         <div id="callback-copy" hidden>
           <label for="callback-text">Текст заявки</label>
           <textarea id="callback-text" readonly rows="3"></textarea>

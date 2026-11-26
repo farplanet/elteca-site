@@ -1,6 +1,5 @@
 const dialog = document.querySelector('#callback-dialog');
 const form = document.querySelector('#callback-form');
-const packageLabel = document.querySelector('#callback-package');
 const status = document.querySelector('#callback-status');
 const copyFallback = document.querySelector('#callback-copy');
 const copyText = document.querySelector('#callback-text');
@@ -17,7 +16,6 @@ if (dialog) {
       event.preventDefault();
       activeCard = link;
       selectedPlan = link.dataset.plan;
-      packageLabel.textContent = 'Пакет ' + selectedPlan;
       copyFallback.hidden = true;
       status.textContent = '';
       dialog.showModal();

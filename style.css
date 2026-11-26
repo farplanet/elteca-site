@@ -230,17 +230,19 @@
 }
 
 .callback-dialog {
-  width: min(100% - 32px, 460px);
+  color-scheme: light;
+  width: min(100% - 32px, 448px);
   max-height: calc(100% - 32px);
   padding: 0;
-  background: var(--panel);
-  color: inherit;
-  border: 1px solid var(--border);
-  border-radius: 18px;
+  color: #101828;
+  background: #fff;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 18px 58px #0005;
 }
 
 .callback-dialog::backdrop {
-  background: #020611c9;
+  background: #05070cd9;
 }
 
 body:has(.callback-dialog[open]) {
@@ -252,28 +254,24 @@ body:has(.callback-dialog[open]) {
   padding: clamp(20px, 5vw, 32px);
 }
 
-.callback-content h2 {
-  margin: 0 40px 4px 0;
-  font-size: clamp(23px, 5vw, 30px);
+.callback-dialog h2 {
+  margin: 0 26px 22px 0;
+  font-size: 21px;
+  font-weight: 600;
   line-height: 1.2;
-}
-
-.callback-package {
-  margin-bottom: 20px;
-  color: #8bc5ff;
 }
 
 .callback-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: #182640;
-  color: inherit;
-  font-size: 24px;
+  top: 9px;
+  right: 9px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #697d95;
+  font-size: 22px;
   line-height: 1;
   cursor: pointer;
 }
@@ -325,8 +323,51 @@ body:has(.callback-dialog[open]) {
   cursor: pointer;
 }
 
-.callback-actions .text-link {
-  margin: 0;
+.callback-dialog input,
+.callback-dialog textarea {
+  margin-bottom: 16px;
+  padding: 12px 15px;
+  background: #fff;
+  border: 1px solid #bcc3cd;
+  border-radius: 12px;
+}
+
+.callback-dialog input::placeholder {
+  color: #697386;
+}
+
+.callback-dialog input:focus,
+.callback-dialog textarea:focus {
+  border-color: #2585ff;
+  outline: 1px solid #2585ff;
+  outline-offset: -1px;
+}
+
+.callback-dialog .callback-actions {
+  margin: 0 0 16px;
+}
+
+.callback-dialog .callback-actions .button {
+  width: 100%;
+  padding: 12px 16px;
+  color: #fff;
+  background: #126bdc;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.callback-dialog .callback-actions .button:hover {
+  background: #0b5fc9;
+}
+
+.callback-dialog .callback-note,
+.callback-dialog .callback-status {
+  color: #616b7d;
+}
+
+.callback-dialog .callback-note + div:not([hidden]),
+.callback-dialog .callback-status:not(:empty) {
+  margin-top: 12px;
 }
 
 /* Contacts and feedback */
