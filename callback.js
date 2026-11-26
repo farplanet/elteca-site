@@ -3,7 +3,6 @@ const form = document.querySelector('#callback-form');
 const packageLabel = document.querySelector('#callback-package');
 const status = document.querySelector('#callback-status');
 const submitButton = form.querySelector('button[type=submit]');
-const accessKey = 'd32d194d562cc95f1509644408c35159c4f3dd7bec9afd58ff73e1d7c428832d';
 const nameField = document.querySelector('#callback-name');
 const phoneField = document.querySelector('#callback-phone');
 
@@ -73,12 +72,12 @@ form.addEventListener('submit', async (event) => {
 
   if (submitButton.disabled) return;
 
-  const submission = Object.fromEntries(new FormData(form));
-  submission['Имя'] = name;
-  submission['Телефон'] = phone;
-  submission['Пакет'] = selectedPlan || 'Обратная связь';
-  submission.accessKey = accessKey;
-  submission.subject = selectedPlan ? 'Elteca — заявка на пакет ' + selectedPlan : 'Elteca — заявка с сайта';
+  const submission = new FormData(form);
+  submission.set('Имя', name);
+  submission.set('Телефон', phone);
+  const submittedPlan = selectedPlan;
+  submission.set('Пакет', submittedPlan || 'Обратная связь');
+  submission.set('subject', submittedPlan ? 'Elteca — заявка на пакет ' + submittedPlan : 'Elteca — заявка с сайта');
 
   submitButton.disabled = true;
   nameField.readOnly = true;
@@ -88,16 +87,19 @@ form.addEventListener('submit', async (event) => {
   try {
     const response = await fetch(form.action, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(submission),
+      headers: { Accept: 'application/json' },
+      body: submission,
       signal: AbortSignal.timeout(15000),
     });
-    const result = await response.json();
-    if (!response.ok || result.status !== 'success') throw new Error('Submission failed');
+    if (response.status === 429) {
+      status.textContent = 'Слишком много заявок. Попробуйте отправить через минуту.';
+      return;
+    }
+    if (!response.ok) throw new Error('Submission failed');
 
     form.reset();
     const confirmation = 'отправлена, спасибо! Мы свяжемся с вами в рабочее время.';
-    status.textContent = selectedPlan === submission['Пакет']
+    status.textContent = submittedPlan && selectedPlan === submittedPlan
       ? 'Заявка на пакет ' + selectedPlan + ' ' + confirmation
       : 'Заявка ' + confirmation;
   } catch {
