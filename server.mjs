@@ -50,6 +50,10 @@ export function createEltecaServer({ origin, token, chatId, sendRequest = fetch 
 
   return createServer({ requestTimeout: 15000 }, async (request, response) => {
     const path = request.url.split('?')[0];
+    if (path === '/job.html') {
+      response.writeHead(301, { Location: 'https://elteca.ru/' });
+      return response.end();
+    }
     if (path !== '/api/enquiry') {
       const page = pages.get(path === '/' ? '/index.html' : path);
       if (!page || !['GET', 'HEAD'].includes(request.method)) return sendJson(response, 404);
