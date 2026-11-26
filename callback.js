@@ -3,7 +3,6 @@ const form = document.querySelector('#callback-form');
 const packageLabel = document.querySelector('#callback-package');
 const status = document.querySelector('#callback-status');
 const submitButton = form.querySelector('button[type=submit]');
-const accessKey = 'bc89d98ee96273007bdfb8c18819f8f882c4cbdc1382abaf7433b9555219b311';
 const nameField = document.querySelector('#callback-name');
 const phoneField = document.querySelector('#callback-phone');
 const dialogFields = dialog?.querySelector('#callback-fields');
@@ -83,8 +82,6 @@ form.addEventListener('submit', async (event) => {
   submission['Имя'] = name;
   submission['Телефон'] = phone;
   submission['Пакет'] = selectedPlan || 'Обратная связь';
-  submission.accessKey = accessKey;
-  submission.subject = selectedPlan ? 'Elteca — заявка на пакет ' + selectedPlan : 'Elteca — заявка с сайта';
 
   submitButton.disabled = true;
   nameField.readOnly = true;
