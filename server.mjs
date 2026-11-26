@@ -10,6 +10,7 @@ const assets = new Map([
   ['/navigation.js', 'text/javascript; charset=utf-8'],
   ['/style.css', 'text/css; charset=utf-8'],
   ['/elteca-mark.png', 'image/png'],
+  ['/favicon.ico', 'image/x-icon'],
 ]);
 
 function sendJson(response, code) {
