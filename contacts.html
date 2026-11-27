@@ -81,7 +81,20 @@
         <h2 id="feedback-title">Обратная связь</h2>
         <div class="tariff-card callback-content feedback-card">
           <p class="callback-plan" id="callback-package" hidden>Выбранный пакет: <strong></strong></p>
-          <p>Онлайн-заявки пока недоступны. Свяжитесь с нами по телефону <a href="tel:+79216319893">+7 (921) 631-98-93</a>.</p>
+          <p id="callback-unavailable">Онлайн-заявки пока недоступны. Позвоните по номеру <a href="tel:+79216319893">+7 (921) 631-98-93</a>.</p>
+          <form id="callback-form" class="ym-disable-submit" method="post" hidden>
+            <label for="callback-name">Ваше имя</label>
+            <input id="callback-name" class="ym-disable-keys" name="Имя" autocomplete="name" maxlength="100" required>
+            <label for="callback-phone">Телефон</label>
+            <input id="callback-phone" class="ym-disable-keys" name="Телефон" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="30" required>
+            <div class="callback-actions">
+              <button class="button" type="submit">Отправить заявку</button>
+            </div>
+            <div class="callback-honeypot" aria-hidden="true">
+              <input type="text" name="sf_extra" tabindex="-1" autocomplete="off">
+            </div>
+            <p class="callback-status" id="callback-status" role="status"></p>
+          </form>
         </div>
       </div>
     </section>
@@ -95,6 +108,7 @@
     </div>
   </footer>
   <script src="navigation.js" defer></script>
-  <script src="callback.js?v=ff3756710d1f" defer></script>
+  <script src="crm-config.js?v=e5a6e4f577b2" defer></script>
+  <script src="callback.js?v=feeb228588cd" defer></script>
 </body>
 </html>

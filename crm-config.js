@@ -1,0 +1,1 @@
+window.ELTECA_CRM_ENDPOINT = '';
